@@ -1,12 +1,31 @@
 {
-  "name": "booze-prototype",
+  "name": "mix-a-lot",
   "version": "1.0.0",
-  "description": "",
-  "main": "keys.js",
+  "description": "A database to create and store mixed drinks",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perltech/mix-a-lot.git"
+  },
+  "keywords": [
+    "mix-a-lot",
+    "booze",
+    "beer",
+    "wine",
+    "liquor",
+    "mixed",
+    "drinks"
+  ],
+  "author": "Noah Perlmutter, Will Mathison, Tori Adams, Nathan Justice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perltech/mix-a-lot/issues"
+  },
+  "homepage": "https://github.com/perltech/mix-a-lot#readme"
 }
