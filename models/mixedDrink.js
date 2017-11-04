@@ -8,5 +8,5 @@ module.exports = function(sequelize, DataTypes) {
         city_of_origin: DataTypes.STRING,
         proof: DataTypes.INTEGER
     });
-
+    return mixedDrinks;
 };
