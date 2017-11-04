@@ -79,7 +79,7 @@ module.exports = function(app) {
         });
     });
       
-    app.delete("/api/mixeed-drinks/:id", function(req, res) {
+    app.delete("/api/mixed-drinks/:id", function(req, res) {
         db.Liquor.destroy({
             where: {
                 id: req.params.id
