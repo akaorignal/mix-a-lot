@@ -20,6 +20,9 @@ module.exports = function(app) {
             where: {
             id: req.body.id
             }
+        })
+        .then(function(dbLiquor) {
+            res.render('liquor-individual', {liquor: dbLiquor});
         });
     });
 
@@ -37,7 +40,10 @@ module.exports = function(app) {
             where: {
             id: req.body.id
             }
+        })
+        .then(function(dbMixedDrinks) {
+            res.render('mixed-drink-individual', {mixedDrinks: dbMixedDrinks});
         });
     });
-    
+
 }; // end of exports
