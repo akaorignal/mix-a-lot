@@ -5,9 +5,13 @@
     <li>
       <p>
         {{this.liquor_id}}. {{this.liquor_name}}
+        {{!-- {{Added delete method}} --}}
+        <form action="/delete?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <button type="submit">DELETE</button>
         </p>
     </li>
-    {{!-- {{Add delete button}} --}}
+ 
   {{/each}}
 </ul>
 
@@ -24,4 +28,3 @@
 	<button type="submit">Update Liquor!</button>
 </form>
 
-{{!-- {{Add delete method}} --}}
