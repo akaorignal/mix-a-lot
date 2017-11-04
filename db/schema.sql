@@ -57,7 +57,7 @@ CREATE TABLE ratio_table(
     FOREIGN KEY (fk_liquor_id) REFERENCES liquor(liquor_id),
     FOREIGN KEY (fk_mixed_id) REFERENCES mixed_drinks(mixed_id),
     PRIMARY KEY (relation_id)
-);
+);  
 
 
 
