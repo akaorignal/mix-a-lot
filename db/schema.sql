@@ -43,7 +43,7 @@ CREATE TABLE mixed_drinks(
     -- Survey businesses to get price points
     -- Possible to webscrape for this information using a testing bot against some thing like urbanspoon?
 
-    PRIMARY KEY (drink_id)
+    PRIMARY KEY (mixed_id)
 );
 
 -- Relational Db to contain ids and foreign keys for liquor, mixed drinks, and food
