@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -18,7 +18,7 @@ app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 // Changed where this was targeting from "../mix-a-lot/routes/api-routes.js" -- Noah
-var routes = require("/routes/api-routes");
+var routes = require("./routes/api-routes");
 
 app.use("/", routes);
 
