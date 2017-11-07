@@ -30,7 +30,7 @@
 <h3>Liquors to Add</h3>
 
 <ul>
-  {{#each liquors}}
+  {{#each liquor}}
     <li>
       <button>
         {{this.liquor_id}}. {{this.liquor_name}}
@@ -106,7 +106,7 @@ $(".delliquor").on("click", function(event){
   var liquor_id = $(this).data("liquorid");
 
 
-  $.ajax("/liquors/" + liquor_id, {
+  $.ajax("/liquor/" + liquor_id, {
     type: "DELETE"
   }).then(
     function() {
@@ -119,7 +119,7 @@ $("#addliquor").on("submit", function(event) {
   var newLiquor = {
     liquor_name: $("#addliquor [name=liquor]").val().trim()
   };
-  $.ajax("/liquors", {
+  $.ajax("/liquor", {
     type: "POST",
     data: newLiquor
 
@@ -135,7 +135,7 @@ $("#updateliquor").on("submit", function(event) {
   var updatedLiquor = { 
     liquor_name: $("#updateliquor [name=liquor]").val().trim()
 };
-$.ajax("/liquors/" + liquor_id, {
+$.ajax("/liquor/" + liquor_id, {
   type: "PUT",
   data: updatedLiquor
 }).then(function(){
