@@ -11,7 +11,7 @@ module.exports = function(app) {
     app.get('/liquors/all', function(req, res) {
         db.Liquor.findAll({})
         .then(function(dbLiquor) {
-            res.render('liquor-list', {liquor: dbLiquor});
+            res.render('partials/liquor/liquor-block', {liquor: dbLiquor});
         });
     });
 
