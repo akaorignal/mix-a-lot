@@ -4,8 +4,11 @@ const exphbs = require("express-handlebars");
 const app = express();
 const router = express.Router();
 
-const routes = require("./routes/api-routes");
-const apiRoutes = require('./routes/api-routes');
+require("./routes/html-routes")(app);
+require('./routes/api-routes')(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/author-api-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
 const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
@@ -17,17 +20,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.use("/", routes);
-app.use('/api', apiRoutes);
+//app.use("/", routes);
+// app.use('/api', apiRoutes);
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
-  });
-
-router.get('/', function(req, res) {
-    res.json({ title: 'Express' });
 });
+
+// router.get('/', function(req, res) {
+//     res.render("index", { title: 'Express' });
+// });
 
 module.exports = router;
