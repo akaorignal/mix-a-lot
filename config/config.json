@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": ".1.got.d@.p0w3r.",
+        "password": null,
         "database": "all_alcohol_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
