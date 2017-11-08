@@ -1,0 +1,201 @@
+
+{{!--This obviously needs a lot of alteration, this is just a jumping point--}}
+
+<div class="jumbotron text-center container-fluid">
+  <h1> Mixalot </h1>
+  <p> Not just a little</p>
+  </div>
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
+{{!--Will need to add logic once liquor is added to prompt a modal requesting the quantity to add or portion.  Then once that is submitted the quantity will be added to it's respective area in the database--}}
+<h2>Add a Liquor</h2>
+<form id="addliquor" class="button-size">
+	<textarea type="text" name="liquor"></textarea>
+	<button type="submit">Save Liquor</button>
+</form>
+{{!--This part could be deleted since we can already delete selections--}}
+<h2>Update a Liquor</h2>
+<form id="updateliquor" class="button-size">
+  <input type="text" name="id" placeholder="id">
+  <textarea type="text" name="liquor" placeholder="Using the number, update your liquor choice"></textarea>
+  <button type="submit">Update Liquor</button>
+</form>
+</div>
+
+<div class="col-sm-2">
+<h3>Liquors to Add</h3>
+
+<ul>
+  {{#each liquor}}
+    <li>
+      <button>
+        {{this.liquor_id}}. {{this.liquor_name}}
+        {{!-- {{Added delete method}} --}}
+        <button data-liquorid="{{this.liquor_id}}" class="delliquor">Delete</button>
+        </button>
+
+    </li>
+ 
+  {{/each}}
+</ul>
+</div>
+<div class="col-sm-2">
+<h3>Mixers to Add</h3>
+
+<ul>
+  {{#each mixers}}
+    <li>
+      <button>
+        {{this.mixer_id}}. {{this.mixer_name}}
+        {{!-- {{Added delete method}} --}}
+        <button data-mixerid="{{this.mixer_id}}" class="delmixer">Delete</button>
+        </button>
+
+    </li>
+ 
+  {{/each}}
+</ul>
+</div>
+<div class="col-sm-4">
+
+{{!--Add mixers, we could either create a mixer table or store mixers in an object that will be added to the mixed_drinks table on submit--}}
+<h2>Add A Mixer</h2>
+<form id="addmixer" class="button-size">
+  <textarea type="text" name="mixer"></textarea>
+  <button type="submit">Save Mixer</button>
+</form>
+{{!--This part could be deleted since we can already delete selections--}}
+<h2>Update A Mixer</h2>
+<form id="updatemixer" class="button-size">
+  <input type="text" name="mixer-id" placeholder="id">
+  <textarea type="text" name="liquor" placeholder="Using the number, update your mixer choice"></textarea>
+  <button type="submit">Update Mixer</button>
+</form>
+</div>
+</div>
+</div>
+
+{{!--Will need to create logic to submit this information into the mixed_drinks table.  Also, we may want to move this to the lower right hand corner leaving room for the "Concoction" to be displayed after clicking the mixer and liquor buttons respectively to be added into the concoction section.--}}
+<div class="container">
+<div class="col-sm-4">
+</div>
+<div class="col-sm-4">
+<h4>Name Your Mixed Drink</h4>
+<form id="addmixdrink" class="button-size">
+  <input type="text" name="mixdrink-id" placeholder="Name"><br>
+  <h4>List Instructions</h4>
+  <textarea type="text" name="mixdrink" placeholder="List Instructions"></textarea><br>
+  <button type="submit">Submit Your Drink!</button>
+</form>
+</div>
+<div class="col-sm-4">
+</div>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+
+//On click functions that add, update, and delete liquor before it's added into the concoction
+//Contains ajax call
+
+$(".delliquor").on("click", function(event){
+  var liquor_id = $(this).data("liquorid");
+
+
+  $.ajax("/liquor/" + liquor_id, {
+    type: "DELETE"
+  }).then(
+    function() {
+      location.reload();
+    });
+});
+
+$("#addliquor").on("submit", function(event) {
+  event.preventDefault();
+  var newLiquor = {
+    liquor_name: $("#addliquor [name=liquor]").val().trim()
+  };
+  $.ajax("/liquor", {
+    type: "POST",
+    data: newLiquor
+
+  }).then(function(){
+    console.log("added a new liquor");
+    location.reload();
+  });
+});
+
+$("#updateliquor").on("submit", function(event) {
+  event.preventDefault();
+  var liquor_id = $("[name=id]").val().trim();
+  var updatedLiquor = { 
+    liquor_name: $("#updateliquor [name=liquor]").val().trim()
+};
+$.ajax("/liquor/" + liquor_id, {
+  type: "PUT",
+  data: updatedLiquor
+}).then(function(){
+  console.log("updated id ", liquor_id);
+  location.reload();
+
+});
+});
+
+//As it stands we do not have a mixers table, we could simply create an object 
+//to store mixers then on submit have it added into the mixed_drinks table with 
+//the liquors.  Thus the below information may need to change to reflect that
+//approach
+
+$(".delmixer").on("click", function(event){
+  var mixer_id = $(this).data("mixerid");
+
+
+  $.ajax("/mixers/" + mixer_id, {
+    type: "DELETE"
+  }).then(
+    function() {
+      location.reload();
+    });
+});
+
+$("#addmixer").on("submit", function(event) {
+  event.preventDefault();
+  var newMixer = {
+    mixer_name: $("#addmixer [name=mixer]").val().trim()
+  };
+  $.ajax("/mixers", {
+    type: "POST",
+    data: newMixer
+
+  }).then(function(){
+    console.log("added a new mixer");
+    location.reload();
+  });
+});
+
+$("#updatemixer").on("submit", function(event) {
+  event.preventDefault();
+  var mixer_id = $("[name=mixer-id]").val().trim();
+  var updatedMixer = { 
+    mixer_name: $("#updatemixer [name=mixer-id]").val().trim()
+};
+$.ajax("/mixers/" + mixer_id, {
+  type: "PUT",
+  data: updatedMixer
+}).then(function(){
+  console.log("updated id ", mixer_id);
+  location.reload();
+
+});
+});
+
+//Add logic that on submit Mixed Drink will add the mix drink and instructions
+//to the mixed_drinks table, and wherever we want to store the instructions
+
+
+
+</script>
