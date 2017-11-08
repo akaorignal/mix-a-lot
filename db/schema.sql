@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS all_alcohol_db;
+
 CREATE DATABASE all_alcohol_db;
 
 USE all_alcohol_db;
@@ -8,7 +10,7 @@ USE all_alcohol_db;
 -- Popularity implemented as local rating system as final goal.
 -- Also, possibly could be seeded from major liquor suppliers, like Midwest Liquor Distributors
 
-CREATE TABLE liquor(
+CREATE TABLE liquors(
     liquor_id INTEGER(10) AUTO_INCREMENT,
     liquor_name VARCHAR(255) NOT NULL,
     liquor_picture VARCHAR(255) NULL,
@@ -54,11 +56,10 @@ CREATE TABLE ratio_table(
     fk_liquor_id INT NULL,
     fk_mixed_id INT NULL,
 
-    FOREIGN KEY (fk_liquor_id) REFERENCES liquor(liquor_id),
+    FOREIGN KEY (fk_liquor_id) REFERENCES liquors(liquor_id),
     FOREIGN KEY (fk_mixed_id) REFERENCES mixed_drinks(mixed_id),
     PRIMARY KEY (relation_id)
 );  
-
 
 
 -- CREATE TABLE wine(
@@ -69,7 +70,7 @@ CREATE TABLE ratio_table(
 
 -- );
 
---exists to match food suggestions to arrays
+-- exists to match food suggestions to arrays
 -- add foreign key to ratio table
 -- CREATE TABLE food(
 
