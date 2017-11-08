@@ -8,5 +8,16 @@ module.exports = function(sequelize, DataTypes) {
         city_of_origin: DataTypes.STRING,
         proof: DataTypes.INTEGER
     });
+
+    mixedDrinks.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        mixedDrinks.belongsToMany(models.ratio, {
+            foreignKey: {
+				allowNull: false
+			}
+        });
+      };
+
     return mixedDrinks;
 };
