@@ -31,7 +31,7 @@ CREATE TABLE liquors(
     PRIMARY KEY (liquor_id)
 );
 
-CREATE TABLE mixed_drinks(
+CREATE TABLE mixedDrinks(
     mixed_id INTEGER(10) AUTO_INCREMENT,
     mixed_name VARCHAR(255) NOT NULL,
     mixed_picture VARCHAR(255) NULL,
