@@ -1,7 +1,7 @@
 // Constructor for Mixed Drinks in Sequelize
 
 module.exports = function(sequelize, DataTypes) {
-    var mixedDrinks = sequelize.define("Mixed Drinks", {
+    var mixedDrinks = sequelize.define("mixedDrinks", {
         mixed_name: DataTypes.STRING,
         mixed_picture: DataTypes.STRING,
         country: DataTypes.STRING,

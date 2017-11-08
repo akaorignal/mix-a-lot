@@ -31,7 +31,7 @@ module.exports = function(app) {
     app.get('/mixed-drinks/all', function(req, res) {
         db.mixedDrinks.findAll({})
         .then(function(dbMixedDrinks) {
-            res.render('partial/mixed-drinks/mixex-block', {mixedDrinks: dbMixedDrinks });
+            res.render('partials/mixed-drinks/mixed-block', {mixedDrinks: dbMixedDrinks });
         });
     });
 
