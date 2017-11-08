@@ -13,9 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Liquor.associate = function(models) {
-      // Associating Author with Posts
-      // When an Author is deleted, also delete any associated Posts
-      Liquor.belongsToMany(models.ratio, {
+      Liquor.belongsToMany(models.Ratio, {
         foreignKey: {
           allowNull: false
         }
