@@ -1,20 +1,26 @@
+<<<<<<< HEAD
 var db = require('../models');
 var DataTypes = require('sequelize/lib/data-types');
+=======
+//var db = require('../models');
+var Liquor = require("../models/liquor.js");
+var mixedDrinks = require("../models/mixedDrink.js");
+>>>>>>> alterations
 
 module.exports = function(app) {
     /* Liquors */
     app.get('/api/liquors', function(req, res) {
-        db.Liquor.findAll({})
-        .then(function(dbLiquor) {
-            res.json(dbLiquor);
-        });
+        Liquor.findAll({})
+            .then(function(dbLiquor) {
+                res.json(dbLiquor);
+            });
     });
 
     // Search for one liquor
-    app.get("/api/liquors/:id", function(req, res) {
-        db.Liquor.findOne({
+    app.get("/api/liquors/:liquor_id", function(req, res) {
+        Liquor.findOne({
             where: {
-            id: req.params.id
+                liquor_id: req.params.liquor_id
             }
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
@@ -37,10 +43,10 @@ module.exports = function(app) {
         });
     });
 
-    app.delete("/api/liquors/:id", function(req, res) {
-        db.Liquor.destroy({
+    app.delete("/api/liquors/:liquor_id", function(req, res) {
+        Liquor.destroy({
             where: {
-                id: req.params.id
+                liquor_id: req.params.liquor_id
             }
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
@@ -50,17 +56,17 @@ module.exports = function(app) {
 
     /* Mixed Drinks */
     app.get('/api/mixed-drinks', function(req, res) {
-        db.mixedDrinks.findAll({})
-        .then(function(dbMixedDrinks) {
-            res.json(dbMixedDrinks);
-        });
+        mixedDrinks.findAll({})
+            .then(function(dbMixedDrinks) {
+                res.json(dbMixedDrinks);
+            });
     });
 
     // Search for one mixed
-    app.get("/api/mixed-drinks/:id", function(req, res) {
-        db.mixedDrinks.findOne({
+    app.get("/api/mixed-drinks/:mixed_id", function(req, res) {
+        mixedDrinks.findOne({
             where: {
-                id: req.params.id
+                mixed_id: req.params.mixed_id
             }
         }).then(function(dbMixedDrinks) {
             res.json(dbMixedDrinks);
@@ -69,7 +75,7 @@ module.exports = function(app) {
 
     app.post("/api/mixed-drinks", function(req, res) {
         // console.log(req.body);
-        db.mixedDrinks.create({
+        mixedDrinks.create({
             mixed_name: DataTypes.STRING,
             mixed_picture: DataTypes.STRING,
             country: DataTypes.STRING,
@@ -79,11 +85,11 @@ module.exports = function(app) {
             res.json(dbMixedDrinks);
         });
     });
-      
-    app.delete("/api/mixed-drinks/:id", function(req, res) {
-        db.Liquor.destroy({
+
+    app.delete("/api/mixed-drinks/:mixed_id", function(req, res) {
+        Liquor.destroy({
             where: {
-                id: req.params.id
+                mixed_id: req.params.mixed_id
             }
         }).then(function(dbLiquor) {
             res.json(dbLiquor);

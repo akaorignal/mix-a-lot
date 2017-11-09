@@ -1,5 +1,6 @@
 //var path = require('path');
-var db = require('../models');
+var Liquor = require("../models/liquor.js");
+var mixedDrinks = require("../models/mixedDrink.js");
 
 module.exports = function(app) {
 
@@ -13,37 +14,38 @@ module.exports = function(app) {
         .then(function(dbLiquor) {
             res.render('partials/liquor/liquor-add', {liquor: dbLiquor});
         });
+
     });
 
-    app.get('/liquors/:id', function(req,res) {
-        db.Liquor.findOne({
-            where: {
-            id: req.body.id
-            }
-        })
-        .then(function(dbLiquor) {
-            res.render('liquor-individual', {liquor: dbLiquor});
-        });
+    app.get('/liquors/:liquor_id', function(req, res) {
+        Liquor.findOne({
+                where: {
+                    liquor_id: req.body.liquor_id
+                }
+            })
+            .then(function(dbLiquor) {
+                res.render('liquor-individual', { liquor: dbLiquor });
+            });
     });
 
 
     /* Mixed Drinks */
     app.get('/mixed-drinks/all', function(req, res) {
-        db.mixedDrinks.findAll({})
-        .then(function(dbMixedDrinks) {
-            res.render('partials/mixed-drinks/mixed-block', {mixedDrinks: dbMixedDrinks });
-        });
+        mixedDrinks.findAll({})
+            .then(function(dbMixedDrinks) {
+                res.render('partials/mixed-drinks/mixed-block', { mixedDrinks: dbMixedDrinks });
+            });
     });
 
-    app.get('/mixed-drinks/:id', function(req,res) {
-        db.mixedDrinks.findOne({
-            where: {
-            id: req.body.id
-            }
-        })
-        .then(function(dbMixedDrinks) {
-            res.render('mixed-drink-individual', {mixedDrinks: dbMixedDrinks});
-        });
+    app.get('/mixed-drinks/:id', function(req, res) {
+        mixedDrinks.findOne({
+                where: {
+                    mixed_id: req.body.mixed_id
+                }
+            })
+            .then(function(dbMixedDrinks) {
+                res.render('mixed-drink-individual', { mixedDrinks: dbMixedDrinks });
+            });
     });
 
 }; // end of exports

@@ -1,13 +1,36 @@
+
 // Constructor for Mixed Drinks in Sequelize
 
-module.exports = function(sequelize, DataTypes) {
-    var mixedDrinks = sequelize.define("mixedDrinks", {
-        mixed_name: DataTypes.STRING,
-        mixed_picture: DataTypes.STRING,
-        country: DataTypes.STRING,
-        city_of_origin: DataTypes.STRING,
-        proof: DataTypes.INTEGER
-    });
+var Sequelize = require("sequelize");
 
-    return mixedDrinks;
-};
+var sequelize = require("../config/connection.js");
+
+var mixedDrinks = sequelize.define('mixedDrinks', {
+    mixed_id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    mixed_name: {
+        type: Sequelize.STRING
+    },
+    mixed_picture: {
+        type: Sequelize.STRING
+    },
+    country: {
+        type: Sequelize.STRING
+    },
+    city_of_origin: {
+        type: Sequelize.STRING
+    },
+    proof: {
+        type: Sequelize.INTEGER
+    }
+}, {
+    timestamps: false
+
+});
+
+mixedDrinks.sync();
+
+module.exports = mixedDrinks;
