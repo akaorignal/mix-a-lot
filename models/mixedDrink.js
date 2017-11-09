@@ -8,5 +8,14 @@ module.exports = function(sequelize, DataTypes) {
         city_of_origin: DataTypes.STRING,
         proof: DataTypes.INTEGER
     });
+
+    mixedDrinks.associate = function(models) {
+        mixedDrinks.belongsToMany(models.Ratio, {
+            foreignKey: {
+				allowNull: false
+			}
+        });
+      };
+
     return mixedDrinks;
 };
