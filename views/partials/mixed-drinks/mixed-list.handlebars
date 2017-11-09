@@ -8,7 +8,6 @@
             <thead>
                 <tr>
                     <th><strong>Name</strong></th>
-                    <th><strong>Country</strong></th>
                     <th><strong>Country of Origin</strong></th>
                     <th><strong>City of Origin</strong></th>
                     <th><strong>Proof</strong></th>
@@ -27,4 +26,25 @@
         </table>
     </div>
 
+    <div class="row">
+        {{!-- Search --}}
+        <form>
+            <div class="form-group">
+                <label for="liquor-name">Search for a Mixed Drink</label>
+                <input type="text" class="form-control" id="mix-search">
+                <button type="GET" class="btn btn-default"><a href="/api/mixed-drinks/:id">Submit</a></button>
+            </div>
+        </form>
+
+        <button class="btn btn-block mix-add">
+            <a href="#">Make a Mixed Drink!</a>
+        </button>
+    </div>
+
 </div>
+<script>
+$(document).ready(function() {
+    // Needs AJAX logic for get request to search for mixed drinks via ID
+
+}); // End Doc Ready
+</script>
