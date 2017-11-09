@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.use(express.static(__dirname + '/public'));
 
 //app.use("/", routes);
 // app.use('/api', apiRoutes);
