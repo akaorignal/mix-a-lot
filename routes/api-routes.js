@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-var db = require('../models');
-var DataTypes = require('sequelize/lib/data-types');
-=======
+
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
->>>>>>> alterations
 
 module.exports = function(app) {
     /* Liquors */
