@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <h3>List of Mixed Drinks</h3>
+    </div>
+
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Name</strong></th>
+                    <th><strong>Country</strong></th>
+                    <th><strong>Country of Origin</strong></th>
+                    <th><strong>City of Origin</strong></th>
+                    <th><strong>Proof</strong></th>
+                </tr>
+            </thead>
+            {{#each mixed}}
+            <tbody>
+                <tr>
+                    <td>{{this.mixed_name}}</td>
+                    <td>{{this.country}}</td>
+                    <td>{{this.city_of_origin}}</td>
+                    <td>{{this.proof}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+
+</div>
