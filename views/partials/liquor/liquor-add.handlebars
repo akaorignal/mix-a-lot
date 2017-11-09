@@ -33,7 +33,7 @@
 
             <div class="form-group">
                 <label for="country">Country of Origin: </label>
-                <input type="text" class="form-control" id="county">
+                <input type="text" class="form-control" id="country">
             </div>
 
             <div class="form-group">
@@ -46,9 +46,34 @@
                 <input type="text" class="form-control" id="proof">
             </div>
 
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="POST" class="btn btn-default"><a href="/api/liquors">Add Liquor</a></button>
         </form>
     </div>
 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+    // If there is logic it goes here, otherwise, destroy.
+    $('.btn').on('click', function() {
+        event.preventDefault();
+        var newLiquor = {
+            liquor_name: $("#liquor-name").val().trim(),
+            liquor_picture: $("#liquor-picture").val().trim(),
+            spirits: $("#spirits").val().trim(),
+            aging: $("#aging").val().trim(),
+            country: $("#country").val().trim(),
+            city_of_origin: $("#city-of-origin").val().trim()
+            proof: $("#proof").val().trim()
+        };
 
+        $.ajax("api/liquor", {
+            type: "POST",
+            data: newLiquor
+        }).then(function(){
+            console.log("added a new liquor");
+            location.reload();
+        });
+    });
+
+}); // End Doc Ready
+</script>
