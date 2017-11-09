@@ -1,36 +1,38 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
-const app = express();
-const router = express.Router();
+var express = require("express");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+
+
+var app = express();
+
 
 require("./routes/html-routes")(app);
 require('./routes/api-routes')(app);
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
-const db = require("./models");
+
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+
+if
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //app.use("/", routes);
 // app.use('/api', apiRoutes);
 
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
 });
 
 // router.get('/', function(req, res) {
 //     res.render("index", { title: 'Express' });
 // });
-
-module.exports = router;

@@ -1,17 +1,27 @@
+// Constructor for liquor in sequelize
 var Sequelize = require("sequelize");
 
 var sequelize = require("../config/connection.js");
 
-var mixedDrinks = sequelize.define('mixedDrinks', {
-    mixed_id: {
+var Liquor = sequelize.define('liquor', {
+    liquor_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    mixed_name: {
+    liquor_name: {
         type: Sequelize.STRING
     },
-    mixed_picture: {
+    liquor_picture: {
+        type: Sequelize.STRING
+    },
+    spirits: {
+        type: Sequelize.STRING
+    },
+    aging: {
+        type: Sequelize.INTEGER
+    },
+    label: {
         type: Sequelize.STRING
     },
     country: {
@@ -28,6 +38,6 @@ var mixedDrinks = sequelize.define('mixedDrinks', {
 
 });
 
-mixedDrinks.sync();
+Liquor.sync();
 
-module.exports = mixedDrinks;
+module.exports = Liquor;
