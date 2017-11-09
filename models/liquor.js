@@ -12,13 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       proof: DataTypes.INTEGER
     });
 
-    Liquor.associate = function(models) {
-      Liquor.belongsToMany(models.Ratio, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
 
     return Liquor;
   };
