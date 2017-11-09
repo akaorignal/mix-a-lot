@@ -1,4 +1,5 @@
 var db = require('../models');
+var DataTypes = require('sequelize/lib/data-types');
 
 module.exports = function(app) {
     /* Liquors */
@@ -20,7 +21,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/liquors", function(req, res) {
+    app.post("/api/add-liquor", function(req, res) {
     // console.log(req.body);
         db.Liquor.create({
             liquor_name: DataTypes.STRING,
