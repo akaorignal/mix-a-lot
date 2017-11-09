@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+	<html lang="en">
+
+		<head>
+			<title> Liquore Survey </title>
+
+		  	<meta charset="utf-8">
+		  	<meta name="viewport" content="width=device-width, initial-scale=1">
+		  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		</head>
+
+		<body>
+			
+			<div class="container">
+				<h2> Liquor Survey</h2>
+			</div>
+			<div class="container">
+				<div>
+					<h3>What liquor type do you drink?</h3>
+				</div>
+				<form>
+					<div class="form-group">
+	  					<label for="name">Name (Required):</label>
+	  					<input type="text" class="form-control" id="name">
+					</div>
+					<div class="form-group">
+	  					<label for="photo">Link to photo image (Required):</label>
+	  					<input type="text" class="form-control" id="photo">
+					</div>
+				</form>
+			</div>
+
+			<div class="container">
+				<h3>Question One</h3>
+				<div class="form-group">
+					<label for="questionOne"><h4> Liquor knocks you faster than beer.</h4></label><br>
+					<select data-placeholder="Pick a number" class="chosen-select" id="qOneSelector">
+	    				<option value='1'>1 (Strongly Disagree)</option>
+	    				<option value='2'>2</option>
+	    				<option value='3'>3</option>
+	    				<option value='4'>4</option>
+	    				<option value='5'>5 (Strongly Agree)</option>
+	    			</select>
+	    		</div>
+			</div>
+
+			<div class="container">
+				<h3>Question Two</h3>
+				<div class="form-group">
+					<label for="questionTwo"><h4> You can drink a 7 ounce bottle of liquore in one golp. </h4></label><br>
+					<select data-placeholder="Pick how much you agree" class="chosen-select" id="qTwoSelector">
+	    				<option value='1'>1 (Strongly Disagree)</option>
+	    				<option value='2'>2</option>
+	    				<option value='3'>3</option>
+	    				<option value='4'>4</option>
+	    				<option value='5'>5 (Strongly Agree)</option>
+	    			</select>
+	    		</div>
+			</div>
+
+			<div class="container">
+				<h3>Question Three</h3>
+				<div class="form-group">
+					<label for="questionThree"><h4> You, like our buy one get one free Promo.</h4></label><br>
+					<select data-placeholder="Pick how much you agree" class="chosen-select" id="qThreeSelector">
+	    				<option value='1'>1 (Strongly Disagree)</option>
+	    				<option value='2'>2</option>
+	    				<option value='3'>3</option>
+	    				<option value='4'>4</option>
+	    				<option value='5'>5 (Strongly Agree)</option>
+	    			</select>
+	    		</div>
+			</div>
+
+			<div class="container">
+				<h3>Question Four</h3>
+				<div class="form-group">
+					<label for="questionFour"><h4> You would drink liquor instead of wine.</h4></label><br>
+					<select data-placeholder="Pick how much you agree" class="chosen-select" id="qFourSelector">
+	    				<option value='1'>1 (Strongly Disagree)</option>
+	    				<option value='2'>2</option>
+	    				<option value='3'>3</option>
+	    				<option value='4'>4</option>
+	    				<option value='5'>5 (Strongly Agree)</option>
+	    			</select>
+	    		</div>
+			</div>
+
+			<div class="container">
+				<h3>Question Five</h3>
+				<div class="form-group">
+					<label for="questionFive"><h4> Repetition of a liquor type is always better than varieties of liquor.</h4></label><br>
+					<select data-placeholder="Pick how much you agree" class="chosen-select" id="qFiveSelector">
+	    				<option value='1'>1 (Strongly Disagree)</option>
+	    				<option value='2'>2</option>
+	    				<option value='3'>3</option>
+	    				<option value='4'>4</option>
+	    				<option value='5'>5 (Strongly Agree)</option>
+	    			</select>
+	    		</div>
+			</div>
+
+			
+			<div class="container">
+			<!-- Trigger the modal with a button -->
+			  	<button type="submit" class="btn btn-primary btn-lg btn-block" id="submitButton">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>Submit Your Prefrences</button>
+			
+			<!-- Modal -->
+			        <div id="resultsModal" class="modal fade" role="dialog">
+			            <div class="modal-dialog">
+			                <!-- Modal content-->
+			                <div class="modal-content">
+			                    <div class="modal-header">
+			                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			                        <h2 class="modal-title">
+			                            <strong> You might like this Liquor !</strong>
+			                        </h2>
+			                    </div>
+			                    <div class="modal-body">
+			                        <h2 id="LiquorName"></h2>
+			          				<div id="LiquorPhoto"></div>
+			          			</div>
+			        		</div>
+			        		<div class="modal-footer">
+			          			<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+			        		</div>
+			      		</div>			      
+			    	</div>
+			  	</div>			  
+			</div>
+			
+			<div class="container">
+				<div>
+					<a href="/api/liquors" class="aPIs"> Home Page </a>
+				</div>
+			</div>
+
+  			<script type="text/javascript">
+
+// Perform action when the submit butten is pressed =======================================================================
+  			  	$("#submitButton").on("click", function() {
+      				collectClimberData();
+      			});
+
+// Collect user input and build into an object and push to friends api ====================================================
+				function collectClimberData () {
+
+// Ensure that the fields are filled out ==================================================================================
+					var formComplete = true;
+		  				
+	  				$(".form-control").each(function() {
+	    				if ( $(this).val() === "") {
+	        				formComplete = false;
+	        				return formComplete;
+	        			};
+	  				});
+	  				
+	  				$(".chosen-select").each(function() {
+	  					if( $(this).val() === "") {
+	  						formComplete = false
+	  						return formComplete;
+	  					};
+	  				});
+
+// Build an object from user input =========================================================================================
+					if (formComplete = true) {
+
+	 					var liquorData = {
+							name: $("#name").val(),
+							photo: $("#photo").val(),
+							scores: [
+								$("#qOneSelector").val(),
+								$("#qTwoSelector").val(),
+								$("#qThreeSelector").val(),
+								$("#qFourSelector").val(),
+								$("#qFiveSelector").val(),
+								$("#qSixSelector").val(),
+								$("#qSevenSelector").val(),
+								$("#qEightSelector").val(),
+								$("#qNineSelector").val(),
+								$("#qTenSelector").val(),
+								$("#qElevenSelector").val(),
+								$("#qTwelveSelector").val()
+							]
+						};
+
+// Post the new climber object to the friends api ===========================================================================
+						$.post("/api/liquored", liquorData, function(data) {
+							alert("Liqour Data Submited!");
+							console.log("-----------------------");
+							console.log("New Liquor:", liquorData);
+							console.log("-----------------------");
+    						compareResults(liquorData); 
+    					}); 					
+					
+					} else {
+						alert("Please complete the form before submitting!");
+					};
+				};
+
+				function compareResults() {
+
+  					var currentURL = window.location.origin;
+  					$.ajax({ url: currentURL + "/api/liquors", method: "GET" })
+      				.done(function(liquorData) {
+      					console.log("------------------------------------");
+        				console.log("URL: " + currentURL + "/api/liquors");
+        				console.log("------------------------------------");
+
+        				for (var i = 0; i < liquorData.length; i++) {
+        					$("#LiquorName").text(liquorData[i].name);
+        					$("#LiquorPhoto").text(liquorData[i].photo);
+        					console.log("--------------------------------");
+        					console.log("Potential matches names: " + liquorData[i].name);
+        					console.log("Potential matches photo url: " + liquorData[i].photo);
+        					console.log("--------------------------------");
+		        		};
+		        		$("#resultsModal").modal('toggle');
+  					});
+  				};
+
+  			</script>
+
+		</body>
+	</html>
