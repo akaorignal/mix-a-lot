@@ -1,0 +1,31 @@
+
+/*
+<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet"> */
+
+.jumbotron {
+    background-image: url("https://cdn.pixabay.com/photo/2016/06/24/11/28/glasses-1477081_960_720.jpg");
+    background-size: 100%;
+};
+
+.column-small-4{
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+}
+
+.jumbotron .h1, .jumbotron h1{
+    text-align: left;
+    color: white;
+}
+
+.jumbotron p{
+    text-align: left;
+    color: white;
+}
+
+
+/* credit --
+
+Photo by Adam Jaime on Unsplash */
+
+https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1049&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D
