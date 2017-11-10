@@ -8,10 +8,10 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.get('/liquors', function(req, res) {
+    app.get('/liquors/all', function(req, res) {
         Liquor.findAll({})
             .then(function(dbLiquor) {
-                res.render('liquors', { liquor: dbLiquor });
+                res.render('partials/liquor/liquor-list', { liquor: dbLiquor });
             });
 
     });
