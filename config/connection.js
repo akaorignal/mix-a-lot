@@ -17,7 +17,8 @@ if (process.env.JAWSDB_URL) {
     var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
 
-    var sequelize = new Sequelize("all_alcohol_db", "root", "Ak48126969!", {
+
+    var sequelize = new Sequelize("all_alcohol_db", "root", null, {
         host: "127.0.0.1",
         dialect: "mysql",
         pool: {
