@@ -20,27 +20,28 @@
 </div>
 
 <div class="col-sm-2">
-<h3>Liquors to Add</h3>
-<div class="liquor-add">
-{{!-- Generated liqour buttons go here --}}
-{{#each liquor}}
-  <button class="liquor-btn">{{this.liquor_name}}</button>
-{{/each}}
-</div>
-
-<ul>
+  <h3>Liquors to Add</h3>
+  <div class="liquor-add">
+  {{!-- Generated liqour buttons go here --}}
   {{#each liquor}}
-    <li>
-      <button>
-        {{this.liquor_id}}. {{this.liquor_name}}
-        {{!-- {{Added delete method}} --}}
-        <button data-liquorid="{{this.liquor_id}}" class="delliquor">Delete</button>
-        </button>
-
-    </li>
- 
+  <div>It looped!</div>
+    <button class="liquor-btn">{{this.liquor_name}}</button>
   {{/each}}
-</ul>
+  </div>
+
+  <ul>
+    {{#each liquor}}
+      <li>
+        <button>
+          {{this.liquor_id}}. {{this.liquor_name}}
+          {{!-- {{Added delete method}} --}}
+          <button data-liquorid="{{this.liquor_id}}" class="delliquor">Delete</button>
+          </button>
+
+      </li>
+  
+    {{/each}}
+  </ul>
 </div>
 <div class="col-sm-2">
 <h3>Mixers to Add</h3>

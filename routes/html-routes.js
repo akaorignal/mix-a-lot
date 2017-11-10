@@ -45,6 +45,14 @@ module.exports = function(app) {
             .then(function(dbMixedDrinks) {
                 res.render('partials/mixed-drinks/mixed-block', { mixedDrinks: dbMixedDrinks });
             });
+
+    });
+
+    app.get('/mixed-drinks/all', function(req, res) {
+        Liquor.findAll({})
+        .then(function(dbLiquor) {
+            res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor });
+        });
     });
 
     app.get('/mixed-drinks/:id', function(req, res) {
