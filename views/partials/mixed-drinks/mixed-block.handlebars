@@ -46,19 +46,10 @@
 <div class="col-sm-2">
 <h3>Mixers to Add</h3>
 
-<ul>
-  {{#each mixers}}
-    <li>
-      <button>
-        {{dataValues.mixed_id}}. {{dataValues.mixed_name}}
-        {{!-- {{Added delete method}} --}}
-        <button data-mixerid="{{dataValues.mixed_id}}" class="delmixer">Delete</button>
-        </button>
-
-    </li>
- 
+  {{#each mixer}}
+    <button>{{dataValues.mixer_name}}</button>
+    {{!-- <div>It looped!</div> --}}
   {{/each}}
-</ul>
 </div>
 <div class="col-sm-4">
 

@@ -56,7 +56,7 @@ module.exports = function(app) {
         .then(function(dbLiquor) {
             Mixer.findAll({})
             .then(function(dbMixer){
-                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixers: dbMixer });
+                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixer: dbMixer });
                 //console.log(dbLiquor);
                 console.log(dbMixer);
             });
