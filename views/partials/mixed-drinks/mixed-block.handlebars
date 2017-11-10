@@ -50,9 +50,9 @@
   {{#each mixers}}
     <li>
       <button>
-        {{this.mixer_id}}. {{this.mixer_name}}
+        {{dataValues.mixed_id}}. {{dataValues.mixed_name}}
         {{!-- {{Added delete method}} --}}
-        <button data-mixerid="{{this.mixer_id}}" class="delmixer">Delete</button>
+        <button data-mixerid="{{dataValues.mixed_id}}" class="delmixer">Delete</button>
         </button>
 
     </li>

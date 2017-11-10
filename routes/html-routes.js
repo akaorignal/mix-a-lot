@@ -40,18 +40,17 @@ module.exports = function(app) {
 
 
     /* Mixed Drinks */
-    app.get('/mixed-drinks/all', function(req, res) {
-        mixedDrinks.findAll({})
-            .then(function(dbMixedDrinks) {
-                res.render('partials/mixed-drinks/mixed-block', { mixedDrinks: dbMixedDrinks });
-            });
-
-    });
 
     app.get('/mixed-drinks/all', function(req, res) {
         Liquor.findAll({})
         .then(function(dbLiquor) {
-            res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor });
+            mixedDrinks.findAll({})
+            .then(function(dbMixedDrinks){
+                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixers: dbMixedDrinks });
+                //console.log(dbLiquor);
+                console.log(dbMixedDrinks);
+            });
+          
         });
     });
 
