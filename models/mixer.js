@@ -23,6 +23,15 @@ var Mixer = sequelize.define('mixer', {
 
 });
 
-Mixer.sync();
+// Mixer.associate = function(models) {
+//     Mixer.belongsToMany(models.Ratio, {
+//       through: 'ratios',
+//       foreignKey: {
+//         allowNull: false
+//       }
+//     });
+// };
+
+Mixer.sync({force: false});
 
 module.exports = Mixer;
