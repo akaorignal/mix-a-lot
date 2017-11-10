@@ -50,11 +50,18 @@ module.exports = function(app) {
 
 
     /* Mixed Drinks */
+
     app.get('/mixed-drinks/all', function(req, res) {
-        mixedDrinks.findAll({})
-            .then(function(dbMixedDrinks) {
-                res.render('partials/mixed-drinks/mixed-block', { mixedDrinks: dbMixedDrinks });
+        Liquor.findAll({})
+        .then(function(dbLiquor) {
+            mixedDrinks.findAll({})
+            .then(function(dbMixedDrinks){
+                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixers: dbMixedDrinks });
+                //console.log(dbLiquor);
+                console.log(dbMixedDrinks);
             });
+          
+        });
     });
 
     app.get('/mixed-drinks/:id', function(req, res) {

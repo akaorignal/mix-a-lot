@@ -20,21 +20,28 @@
 </div>
 
 <div class="col-sm-2">
-<h3>Liquors to Add</h3>
-
-<ul>
+  <h3>Liquors to Add</h3>
+  <div class="liquor-add">
+  {{!-- Generated liqour buttons go here --}}
   {{#each liquor}}
-    <li>
-      <button>
-        {{this.liquor_id}}. {{this.liquor_name}}
-        {{!-- {{Added delete method}} --}}
-        <button data-liquorid="{{this.liquor_id}}" class="delliquor">Delete</button>
-        </button>
-
-    </li>
- 
+  <div>It looped!</div>
+    <button class="liquor-btn">{{this.liquor_name}}</button>
   {{/each}}
-</ul>
+  </div>
+
+  <ul>
+    {{#each liquor}}
+      <li>
+        <button>
+          {{this.liquor_id}}. {{this.liquor_name}}
+          {{!-- {{Added delete method}} --}}
+          <button data-liquorid="{{this.liquor_id}}" class="delliquor">Delete</button>
+          </button>
+
+      </li>
+  
+    {{/each}}
+  </ul>
 </div>
 <div class="col-sm-2">
 <h3>Mixers to Add</h3>
@@ -43,9 +50,9 @@
   {{#each mixers}}
     <li>
       <button>
-        {{this.mixer_id}}. {{this.mixer_name}}
+        {{dataValues.mixed_id}}. {{dataValues.mixed_name}}
         {{!-- {{Added delete method}} --}}
-        <button data-mixerid="{{this.mixer_id}}" class="delmixer">Delete</button>
+        <button data-mixerid="{{dataValues.mixed_id}}" class="delmixer">Delete</button>
         </button>
 
     </li>
@@ -89,106 +96,110 @@
 </div>
 </div>
 
-<script type="text/javascript" src=""></script>
+{{!-- <script type="text/javascript" src=""></script> --}}
+{{!-- START SCRIPT!!!! --}}
 <script type="text/javascript">
-
-//On click functions that add, update, and delete liquor before it's added into the concoction
+$( document ).ready(function() {
+    //console.log( "ready!" );
+    //On click functions that add, update, and delete liquor before it's added into the concoction
 //Contains ajax call
 
-$(".delliquor").on("click", function(event){
-  var liquor_id = $(this).data("liquorid");
+  $(".delliquor").on("click", function(event){
+    var liquor_id = $(this).data("liquorid");
 
 
+    $.ajax("/liquor/" + liquor_id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        location.reload();
+      });
+  });
+
+  $("#addliquor").on("submit", function(event) {
+    event.preventDefault();
+    var newLiquor = {
+      liquor_name: $("#addliquor [name=liquor]").val().trim()
+    };
+    $.ajax("/liquor", {
+      type: "POST",
+      data: newLiquor
+
+    }).then(function(){
+      console.log("added a new liquor");
+      location.reload();
+    });
+  });
+
+  $("#updateliquor").on("submit", function(event) {
+    event.preventDefault();
+    var liquor_id = $("[name=id]").val().trim();
+    var updatedLiquor = { 
+      liquor_name: $("#updateliquor [name=liquor]").val().trim()
+  };
   $.ajax("/liquor/" + liquor_id, {
-    type: "DELETE"
-  }).then(
-    function() {
+    type: "PUT",
+    data: updatedLiquor
+  }).then(function(){
+    console.log("updated id ", liquor_id);
+    location.reload();
+
+  });
+  });
+
+  //As it stands we do not have a mixers table, we could simply create an object 
+  //to store mixers then on submit have it added into the mixed_drinks table with 
+  //the liquors.  Thus the below information may need to change to reflect that
+  //approach
+
+  $(".delmixer").on("click", function(event){
+    var mixer_id = $(this).data("mixerid");
+
+
+    $.ajax("/mixers/" + mixer_id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        location.reload();
+      });
+  });
+
+  $("#addmixer").on("submit", function(event) {
+    event.preventDefault();
+    var newMixer = {
+      mixer_name: $("#addmixer [name=mixer]").val().trim()
+    };
+    $.ajax("/mixers", {
+      type: "POST",
+      data: newMixer
+
+    }).then(function(){
+      console.log("added a new mixer");
       location.reload();
     });
-});
-
-$("#addliquor").on("submit", function(event) {
-  event.preventDefault();
-  var newLiquor = {
-    liquor_name: $("#addliquor [name=liquor]").val().trim()
-  };
-  $.ajax("/liquor", {
-    type: "POST",
-    data: newLiquor
-
-  }).then(function(){
-    console.log("added a new liquor");
-    location.reload();
   });
-});
 
-$("#updateliquor").on("submit", function(event) {
-  event.preventDefault();
-  var liquor_id = $("[name=id]").val().trim();
-  var updatedLiquor = { 
-    liquor_name: $("#updateliquor [name=liquor]").val().trim()
-};
-$.ajax("/liquor/" + liquor_id, {
-  type: "PUT",
-  data: updatedLiquor
-}).then(function(){
-  console.log("updated id ", liquor_id);
-  location.reload();
-
-});
-});
-
-//As it stands we do not have a mixers table, we could simply create an object 
-//to store mixers then on submit have it added into the mixed_drinks table with 
-//the liquors.  Thus the below information may need to change to reflect that
-//approach
-
-$(".delmixer").on("click", function(event){
-  var mixer_id = $(this).data("mixerid");
-
-
+  $("#updatemixer").on("submit", function(event) {
+    event.preventDefault();
+    var mixer_id = $("[name=mixer-id]").val().trim();
+    var updatedMixer = { 
+      mixer_name: $("#updatemixer [name=mixer-id]").val().trim()
+  };
   $.ajax("/mixers/" + mixer_id, {
-    type: "DELETE"
-  }).then(
-    function() {
-      location.reload();
-    });
-});
-
-$("#addmixer").on("submit", function(event) {
-  event.preventDefault();
-  var newMixer = {
-    mixer_name: $("#addmixer [name=mixer]").val().trim()
-  };
-  $.ajax("/mixers", {
-    type: "POST",
-    data: newMixer
-
+    type: "PUT",
+    data: updatedMixer
   }).then(function(){
-    console.log("added a new mixer");
+    console.log("updated id ", mixer_id);
     location.reload();
+
   });
-});
+  });
 
-$("#updatemixer").on("submit", function(event) {
-  event.preventDefault();
-  var mixer_id = $("[name=mixer-id]").val().trim();
-  var updatedMixer = { 
-    mixer_name: $("#updatemixer [name=mixer-id]").val().trim()
-};
-$.ajax("/mixers/" + mixer_id, {
-  type: "PUT",
-  data: updatedMixer
-}).then(function(){
-  console.log("updated id ", mixer_id);
-  location.reload();
+  //Add logic that on submit Mixed Drink will add the mix drink and instructions
+  //to the mixed_drinks table, and wherever we want to store the instructions
 
-});
-});
 
-//Add logic that on submit Mixed Drink will add the mix drink and instructions
-//to the mixed_drinks table, and wherever we want to store the instructions
-
+}); // End of Document Ready
 
 
 </script>
