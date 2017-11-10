@@ -40,30 +40,14 @@ module.exports = function(app) {
     app.post("/api/add-liquor", function(req, res) {
         // console.log(req.body);
         Liquor.create({
-            liquor_name: {
-                type: Sequelize.STRING
-            },
-            liquor_picture: {
-                type: Sequelize.STRING
-            },
-            spirits: {
-                type: Sequelize.STRING
-            },
-            aging: {
-                type: Sequelize.INTEGER
-            },
-            label: {
-                type: Sequelize.STRING
-            },
-            country: {
-                type: Sequelize.STRING
-            },
-            city_of_origin: {
-                type: Sequelize.STRING
-            },
-            proof: {
-                type: Sequelize.INTEGER
-            }
+            liquor_name: req.body.liquor_name
+            liquor_picture: req.body.liquor_picture
+            spirits: req.body.spirits
+            aging: req.body.aging
+            label: req.body.label
+            country: req.body.country
+            city_of_origin: req.body.city_of_origin
+            proof: req.body.proof
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
         });
