@@ -2,7 +2,7 @@
     "development":
     {
         "username": "root",
-        "password": "Ak48126969!",
+        "password": "shad",
         "database": "all_alcohol_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
@@ -22,7 +22,6 @@
         "database": "database_production",
         "host": "127.0.0.1",
         "dialect": "mysql",
-        "use_env-variable": "JAWSDB_URL",
-        "dialect": "mysql"
+        "use_env-variable": "JAWSDB_URL"
     }
 }

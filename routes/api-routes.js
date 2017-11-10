@@ -1,7 +1,11 @@
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+<<<<<<< HEAD
 var liquorData = require("../views/partials/liquor/liquored.js");
+=======
+var Mixer = require("../models/mixer.js");
+>>>>>>> 179e6c4cdce0a377e71d54b7825b34e345fe47e8
 
 module.exports = function(app) {
     /* Liquors */

@@ -37,6 +37,15 @@ var Liquor = sequelize.define('liquor', {
 
 });
 
-Liquor.sync();
+// Liquor.associate = function(models) {
+//     Liquor.belongsToMany(models.Ratio, {
+//       through: 'ratios',
+//       foreignKey: {
+//         allowNull: false
+//       }
+//     });
+// };
+
+Liquor.sync({force: false});
 
 module.exports = Liquor;

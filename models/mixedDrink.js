@@ -31,6 +31,15 @@ var mixedDrinks = sequelize.define('mixedDrinks', {
 
 });
 
-mixedDrinks.sync();
+// mixedDrinks.associate = function(models) {
+//     mixedDrinks.belongsToMany(models.Ratio, {
+//       through: 'ratios',
+//       foreignKey: {
+//         allowNull: false
+//       }
+//     });
+// };
+
+mixedDrinks.sync({force: false});
 
 module.exports = mixedDrinks;
