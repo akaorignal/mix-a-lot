@@ -4,6 +4,8 @@ var mixedDrinks = require("../models/mixedDrink.js");
 var liquorData = require("../views/partials/liquor/liquored.js");
 var Mixer = require("../models/mixer.js");
 
+var Sequelize = require("sequelize");
+
 module.exports = function(app) {
     /* Liquors */
 
