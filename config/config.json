@@ -22,7 +22,7 @@
         "database": "database_production",
         "host": "127.0.0.1",
         "dialect": "mysql",
-        "use_env-variable": "JAWSB_URL",
+        "use_env-variable": "JAWSDB_URL",
         "dialect": "mysql"
     }
 }
