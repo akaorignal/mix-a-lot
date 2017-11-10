@@ -10,10 +10,10 @@ module.exports = function(app) {
 
     /* Liquors */
     app.get('/liquors/add', function(req, res) {
-        db.Liquor.findAll({})
-        .then(function(dbLiquor) {
-            res.render('partials/liquor/liquor-add', {liquor: dbLiquor});
-        });
+        Liquor.findAll({})
+            .then(function(dbLiquor) {
+                res.render('partials/liquor/liquor-add', { liquor: dbLiquor });
+            });
 
     });
 

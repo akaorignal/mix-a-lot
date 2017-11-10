@@ -1,4 +1,3 @@
-
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
@@ -24,8 +23,8 @@ module.exports = function(app) {
     });
 
     app.post("/api/add-liquor", function(req, res) {
-    // console.log(req.body);
-        db.Liquor.create({
+        // console.log(req.body);
+        Liquor.create({
             liquor_name: DataTypes.STRING,
             liquor_picture: DataTypes.STRING,
             spirits: DataTypes.STRING,
