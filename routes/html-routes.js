@@ -8,6 +8,14 @@ module.exports = function(app) {
         res.render('index');
     });
 
+    app.get('/liquors', function(req, res) {
+        Liquor.findAll({})
+            .then(function(dbLiquor) {
+                res.render('liquors', { liquor: dbLiquor });
+            });
+
+    });
+
     /* Liquors */
     app.get('/liquors/add', function(req, res) {
         Liquor.findAll({})
