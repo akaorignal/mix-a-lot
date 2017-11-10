@@ -7,13 +7,15 @@ var Mixer = require("../models/mixer.js");
 module.exports = function(app) {
     /* Liquors */
 
-app.get("/api/liquored", function(req, res) {
-    res.json(liquorData);
-});
 
-app.post("/api/liquored", function(req, res) {
-    res.json(liquorData);
-});
+
+    app.get("/api/liquored", function(req, res) {
+        res.json(liquorData);
+    });
+
+    app.post("/api/liquored", function(req, res) {
+        res.json(liquorData);
+    });
 
     app.get('/api/liquors', function(req, res) {
         Liquor.findAll({})
@@ -36,14 +38,30 @@ app.post("/api/liquored", function(req, res) {
     app.post("/api/add-liquor", function(req, res) {
         // console.log(req.body);
         Liquor.create({
-            liquor_name: DataTypes.STRING,
-            liquor_picture: DataTypes.STRING,
-            spirits: DataTypes.STRING,
-            aging: DataTypes.INTEGER,
-            label: DataTypes.STRING,
-            country: DataTypes.STRING,
-            city_of_origin: DataTypes.STRING,
-            proof: DataTypes.INTEGER
+            liquor_name: {
+                type: Sequelize.STRING
+            },
+            liquor_picture: {
+                type: Sequelize.STRING
+            },
+            spirits: {
+                type: Sequelize.STRING
+            },
+            aging: {
+                type: Sequelize.INTEGER
+            },
+            label: {
+                type: Sequelize.STRING
+            },
+            country: {
+                type: Sequelize.STRING
+            },
+            city_of_origin: {
+                type: Sequelize.STRING
+            },
+            proof: {
+                type: Sequelize.INTEGER
+            }
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
         });
