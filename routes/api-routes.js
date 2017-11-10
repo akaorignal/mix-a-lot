@@ -1,9 +1,19 @@
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+var liquorData = require("../views/partials/liquor/liquored.js");
 
 module.exports = function(app) {
     /* Liquors */
+
+app.get("/api/liquored", function(req, res) {
+    res.json(liquorData);
+});
+
+app.post("/api/liquored", function(req, res) {
+    res.json(liquorData);
+});
+
     app.get('/api/liquors', function(req, res) {
         Liquor.findAll({})
             .then(function(dbLiquor) {

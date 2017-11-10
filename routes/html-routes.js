@@ -1,11 +1,21 @@
 //var path = require('path');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+var liquorData = require("../models2/liquored.js");
 
 module.exports = function(app) {
 
     app.get('/', function(req, res) {
         res.render('index');
+    });
+
+
+    app.get('/liquors/home', function(req, res) {
+        res.render('partials/liquor/liquor2');
+    });
+
+       app.get('/liquors/survey', function(req, res) {
+        res.render('partials/liquor/survey');
     });
 
     app.get('/liquors/all', function(req, res) {
