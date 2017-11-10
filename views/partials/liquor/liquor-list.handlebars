@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h3>List of Mixed Drinks</h3>
+        <h3>List of All Liquors</h3>
     </div>
 
     <div class="row">
@@ -8,15 +8,21 @@
             <thead>
                 <tr>
                     <th><strong>Name</strong></th>
+                    <th><strong>Spirit</strong></th>
+                    <th><strong>Aging</strong></th>
+                    <th><strong>Label</strong></th>
                     <th><strong>Country of Origin</strong></th>
                     <th><strong>City of Origin</strong></th>
                     <th><strong>Proof</strong></th>
                 </tr>
             </thead>
-            {{#each mixed}}
+            {{#each liquor}}
             <tbody>
                 <tr>
-                    <td>{{this.mixed_name}}</td>
+                    <td>{{this.liquor_name}}</td>
+                    <td>{{this.spirits}}</td>
+                    <td>{{this.aging}}</td>
+                    <td>{{this.label}}</td>
                     <td>{{this.country}}</td>
                     <td>{{this.city_of_origin}}</td>
                     <td>{{this.proof}}</td>
@@ -30,14 +36,14 @@
         {{!-- Search --}}
         <form>
             <div class="form-group">
-                <label for="mix-search">Search for a Mixed Drink</label>
-                <input type="text" class="form-control" id="mix-search">
+                <label for="liquor-search">Search for Liquor</label>
+                <input type="text" class="form-control" id="liquor-search">
                 <button type="GET" class="btn btn-default"><a href="/api/mixed-drinks/:id">Submit</a></button>
             </div>
         </form>
 
-        <button class="btn btn-block mix-add">
-            <a href="#">Make a Mixed Drink!</a>
+        <button class="btn btn-block liquor-add">
+            <a href="#">Add a New Liquor!</a>
         </button>
     </div>
 
