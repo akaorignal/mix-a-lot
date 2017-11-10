@@ -54,11 +54,11 @@ module.exports = function(app) {
     app.get('/mixed-drinks/all', function(req, res) {
         Liquor.findAll({})
         .then(function(dbLiquor) {
-            mixedDrinks.findAll({})
-            .then(function(dbMixedDrinks){
-                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixers: dbMixedDrinks });
+            Mixer.findAll({})
+            .then(function(dbMixer){
+                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixers: dbMixer });
                 //console.log(dbLiquor);
-                console.log(dbMixedDrinks);
+                console.log(dbMixer);
             });
           
         });
