@@ -1,34 +1,24 @@
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Smirnoff', 'vodka');
+INSERT INTO liquors (liquor_name, spirits) VALUES ('Smirnoff', 'vodka');
 
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Seamans', 'Gin');
-
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Smirnoff', 'vodka');
-
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Seamans', 'Gin');
+INSERT INTO liquors (liquor_name, spirits) VALUES ('Seamans', 'Gin');
 
 
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Smirnoff', 'vodka');
+INSERT INTO mixedDrinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Barcelona');
 
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Seamans', 'Gin');
+INSERT INTO mixers (mixer_name) VALUES ("sprite");
 
+INSERT INTO mixers (mixer_name) VALUES ("bitter lemon");
 
-INSERT INTO liquor (liquor_name, spirits) VALUES ('Smirnoff', 'vodka');
+INSERT INTO mixers (mixer_name) VALUES ("ginger ale");
 
+INSERT INTO mixers (mixer_name) VALUES ("lemon sour");
 
+INSERT INTO mixers (mixer_name) VALUES ("tonic water");
 
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
+INSERT INTO mixers (mixer_name) VALUES ("grenadine");
 
-
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
-
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
-
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
+INSERT INTO mixers (mixer_name) VALUES ("ginger beer");
 
 
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
-
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
 
 
-INSERT INTO mixed_drinks (mixed_name, country, city_of_origin) VALUES ('Mohito', 'Spain', 'Bacelona');
