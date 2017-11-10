@@ -1,6 +1,7 @@
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+var Mixer = require("../models/Mixers.js");
 
 module.exports = function(app) {
     /* Liquors */
