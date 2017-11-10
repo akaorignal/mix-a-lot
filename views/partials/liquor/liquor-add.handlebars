@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <h3>Add a New Liquor</h3>
+    </div>
+
+    <div class="row">
+        <form>
+
+            <div class="form-group">
+                <label for="liquor-name">Liquor Name:</label>
+                <input type="text" class="form-control" id="liquor-name">
+            </div>
+
+            <div class="form-group">
+                <label for="liquor-picture">Liquor Picture: </label>
+                <input type="text" class="form-control" id="liquor-picture">
+            </div>
+
+            <div class="form-group">
+                <label for="spirits">Type of Spirit: </label>
+                <input type="text" class="form-control" id="spirits">
+            </div>
+
+            <div class="form-group">
+                <label for="aging">Aging: </label>
+                <input type="text" class="form-control" id="aging">
+            </div>
+
+            <div class="form-group">
+                <label for="label">Label: </label>
+                <input type="text" class="form-control" id="label">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country of Origin: </label>
+                <input type="text" class="form-control" id="country">
+            </div>
+
+            <div class="form-group">
+                <label for="city-of-origin">City of Origin: </label>
+                <input type="text" class="form-control" id="city-of-origin">
+            </div>
+
+            <div class="form-group">
+                <label for="proof">Proof: </label>
+                <input type="text" class="form-control" id="proof">
+            </div>
+
+            <button type="POST" class="btn btn-default"><a href="/api/add">Add Liquor</a></button>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    // If there is logic it goes here, otherwise, destroy.
+    $('.btn').on('click', function() {
+        event.preventDefault();
+        var newLiquor = {
+            liquor_name: $("#liquor-name").val().trim(),
+            liquor_picture: $("#liquor-picture").val().trim(),
+            spirits: $("#spirits").val().trim(),
+            aging: $("#aging").val().trim(),
+            country: $("#country").val().trim(),
+            city_of_origin: $("#city-of-origin").val().trim(),
+            proof: $("#proof").val().trim(),
+        };
+
+        $.ajax("/api/add-liquor", {
+            type: "POST",
+            data: newLiquor
+        }).then(function(){
+            console.log("added a new liquor");
+            location.reload();
+        });
+    });
+
+}); // End Doc Ready
+</script>

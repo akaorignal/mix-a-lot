@@ -1,20 +1,26 @@
-
-// Constructor for Mixed Drinks in Sequelize
-
 var Sequelize = require("sequelize");
 
 var sequelize = require("../config/connection.js");
 
-var mixedDrinks = sequelize.define('mixedDrinks', {
-    mixed_id: {
+var Liquor = sequelize.define('liquor', {
+    liquor_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    mixed_name: {
+    liquor_name: {
         type: Sequelize.STRING
     },
-    mixed_picture: {
+    liquor_picture: {
+        type: Sequelize.STRING
+    },
+    spirits: {
+        type: Sequelize.STRING
+    },
+    aging: {
+        type: Sequelize.INTEGER
+    },
+    label: {
         type: Sequelize.STRING
     },
     country: {
@@ -31,8 +37,8 @@ var mixedDrinks = sequelize.define('mixedDrinks', {
 
 });
 
-// mixedDrinks.associate = function(models) {
-//     mixedDrinks.belongsToMany(models.Ratio, {
+// Liquor.associate = function(models) {
+//     Liquor.belongsToMany(models.Ratio, {
 //       through: 'ratios',
 //       foreignKey: {
 //         allowNull: false
@@ -40,6 +46,6 @@ var mixedDrinks = sequelize.define('mixedDrinks', {
 //     });
 // };
 
-mixedDrinks.sync({force: false});
+Liquor.sync({force: false});
 
-module.exports = mixedDrinks;
+module.exports = Liquor;

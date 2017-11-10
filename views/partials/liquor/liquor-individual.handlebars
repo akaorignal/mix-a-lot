@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row text-center">
+        <h3>{{this.liquor}}</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <ul>
+            {{#each liquor}}
+            <li>Name: {{this.liquor_name}}</li>
+            <li>Spirit: {{this.spirits}}</li>
+            <li>Aging: {{this.aging}}</li>
+            <li>Label: {{this.label}}</li>
+            <li>Country of Origin: {{this.country}}</li>
+            <li>City of Origin: {{this.city_of_origin}}</li>
+            <li>Proof: {{this.proof}}</li>
+            {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            {{!-- Liquor Image --}}
+            {{!-- <img src={{this.liquor_picture}} alt={{this.liquor_name}} --}}
+        </div>
+
+        <div class="row">
+            <button class="btn btn-block liquor-list">
+                <a href="#">Back to Liquor List</a>
+            </button>
+            <button class="btn btn-block liquor-add">
+                <a href="#">Add a New Liquor!</a>
+            </button>
+        </div>
+    </div>
+
+</div>
