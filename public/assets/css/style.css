@@ -1,9 +1,12 @@
 
 /*
 <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet"> */
+body{
+    background-color: #000000;
+}
 
 .jumbotron {
-    background-image: url("https://cdn.pixabay.com/photo/2016/06/24/11/28/glasses-1477081_960_720.jpg");
+    background-image: url("https://images.pexels.com/photos/248427/pexels-photo-248427.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
     background-size: 100%;
 };
 
@@ -23,7 +26,19 @@
     color: white;
 }
 
+h2{
+    
+    color: #2c50dc;
 
+}
+
+h3 {
+    color: purple;
+}
+
+h4 {
+    color: purple;
+}
 /* credit --
 
 Photo by Adam Jaime on Unsplash */
