@@ -16,7 +16,7 @@ module.exports = function(app) {
         res.render('partials/liquor/liquor2');
     });
 
-       app.get('/liquors/survey', function(req, res) {
+    app.get('/liquors/survey', function(req, res) {
         res.render('partials/liquor/survey');
     });
 
@@ -53,15 +53,15 @@ module.exports = function(app) {
 
     app.get('/mixed-drinks/all', function(req, res) {
         Liquor.findAll({})
-        .then(function(dbLiquor) {
-            Mixer.findAll({})
-            .then(function(dbMixer){
-                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixer: dbMixer });
-                //console.log(dbLiquor);
-                console.log(dbMixer);
+            .then(function(dbLiquor) {
+                Mixer.findAll({})
+                    .then(function(dbMixer) {
+                        res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixer: dbMixer });
+                        //console.log(dbLiquor);
+                        console.log(dbMixer);
+                    });
+
             });
-          
-        });
     });
 
     app.get('/mixed-drinks/:id', function(req, res) {
@@ -73,6 +73,15 @@ module.exports = function(app) {
             .then(function(dbMixedDrinks) {
                 res.render('mixed-drink-individual', { mixedDrinks: dbMixedDrinks });
             });
+    });
+
+
+    app.get('/mixed/all', function(req, res) {
+        mixedDrinks.findAll({})
+            .then(function(dbMixedDrinks) {
+                res.render('partials/mixed-drinks/mixed-list', { mixedDrinks: dbMixedDrinks });
+            });
+
     });
 
 }; // end of exports
