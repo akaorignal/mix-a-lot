@@ -135,7 +135,7 @@ module.exports = function(app) {
     app.post("/api/mixers", function(req, res) {
         // console.log(req.body);
         Mixer.create({
-            mixer_name: req.body.liquor_name,
+            mixer_name: req.body.mixer_name,
             mixer_picture: req.body.mixer_picture,
             category: req.body.category
         }).then(function(dbMixer) {
