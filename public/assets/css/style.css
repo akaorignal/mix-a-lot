@@ -75,6 +75,14 @@ th {
 select {
     color: #0E0B16;
 }
+
+input {
+    color: #0E0B16;
+}
+
+textarea {
+    color: #0E0B16
+}
 /* credit --
 
 Photo by Adam Jaime on Unsplash */
