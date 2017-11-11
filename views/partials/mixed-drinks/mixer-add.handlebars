@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row text-center">
+        <h2>Add a New Mixer</h2>
+    </div>
+
+    <div class="row">
+        <form>
+
+            <div class="form-group">
+                <label for="mixer-name">Mixer Name:</label>
+                <input type="text" class="form-control" id="mixer-name">
+            </div>
+
+            <button type="POST" class="btn btn-default"><a href="/api/mixers">Add Mixer</a></button>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    // If there is logic it goes here, otherwise, destroy.
+    $('.btn').on('click', function(event) {
+
+        event.preventDefault();
+        var newMixer = {
+            mixer_name: $("#mixer-name").val().trim(),
+        };
+        console.log(newMixer);
+
+
+    $.post("/api/mixers", newMixer) 
+    .done(function(data) {
+        console.log(data);
+      });
+      
+    console.log(newMixer);
+}); // End Doc Ready
+</script>

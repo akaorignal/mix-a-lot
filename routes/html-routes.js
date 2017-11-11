@@ -85,9 +85,17 @@ module.exports = function(app) {
     });
 
     app.get('/mixers/all', function(req, res) {
-        mixedDrinks.findAll({})
+        Mixer.findAll({})
             .then(function(dbMixer) {
-                res.render('partials/mixed-drinks/mixer-list', { Mixer: dbMixer });
+                res.render('partials/mixed-drinks/mixer-list', { mixer: dbMixer });
+            });
+
+    });
+
+    app.get('/mixers/add', function(req, res) {
+        Mixer.findAll({})
+            .then(function(dbMixer) {
+                res.render('partials/mixed-drinks/mixer-add', { mixer: dbMixer });
             });
 
     });
