@@ -1,0 +1,57 @@
+<div class="text-center container-fluid">
+        <h1> Mixers List</h1>
+        <p>Mixer Options</p>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <h3>List of All Mixers</h3>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>Name</strong></th>
+                    <th><strong>Country</strong></th>
+                </tr>
+            </thead>
+            {{#each mixer}}
+            <tbody>
+                <tr>
+                    <td>{{this.mixer_name}}</td>
+                    <td>{{this.mixer_category}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+
+    <div class="row">
+        {{!-- Search --}}
+        {{!-- <div class="input-group">
+            <input class="form-control width100">
+            <span class="input-group-btn">
+                <button class="btn btn-info">Search</button>
+            </span>
+        </div> --}}
+        {{!-- <form>
+            <div class="form-group">
+                <label for="liquor-search">Search for Liquor</label>
+                <input type="text" class="form-control" id="liquor-search">
+                <button type="GET" class="btn btn-default"><a href="/api/mixed-drinks/:id">Submit</a></button>
+            </div>
+        </form> --}}
+        <br>
+        <button class="btn btn-block">
+            <a href="/mixed-drinks/all">Make a Mixer</a>
+        </button>
+    </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    // Needs AJAX logic for get request to search for mixed drinks via ID
+
+}); // End Doc Ready
+</script>

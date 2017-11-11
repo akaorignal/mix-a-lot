@@ -84,4 +84,12 @@ module.exports = function(app) {
 
     });
 
+    app.get('/mixers/all', function(req, res) {
+        mixedDrinks.findAll({})
+            .then(function(dbMixer) {
+                res.render('partials/mixed-drinks/mixer-list', { Mixer: dbMixer });
+            });
+
+    });
+
 }; // end of exports
