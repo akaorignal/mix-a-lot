@@ -52,9 +52,9 @@
 
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
+
     // If there is logic it goes here, otherwise, destroy.
-    $('.btn').on('click', function() {
+    $('.btn').on('click', function(event) {
         event.preventDefault();
         var newLiquor = {
             liquor_name: $("#liquor-name").val().trim(),
@@ -66,14 +66,11 @@ $(document).ready(function() {
             proof: $("#proof").val().trim(),
         };
 
-        $.ajax("/api/add-liquor", {
-            type: "POST",
-            data: newLiquor
-        }).then(function(){
-            console.log("added a new liquor");
-            location.reload();
-        });
-    });
+        $.post("/api/all", newLiquor) 
+      .done(function(data) {
 
+            console.log(data);
+      });
+  console.log(newLiquor);
 }); // End Doc Ready
 </script>
