@@ -70,7 +70,11 @@ td {
 }
 th {
     background-color: #4717F6;
-} 
+}
+
+select {
+    color: #0E0B16;
+}
 /* credit --
 
 Photo by Adam Jaime on Unsplash */
