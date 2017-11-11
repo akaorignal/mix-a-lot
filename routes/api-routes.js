@@ -113,4 +113,45 @@ module.exports = function(app) {
         });
     });
 
+
+    app.get('/api/mixers', function(req, res) {
+
+        Mixer.findAll({})
+            .then(function(dbMixer) {
+                res.json(dbMixer);
+            });
+    });
+
+    app.get("/api/mixers/:mixer_id", function(req, res) {
+        Mixer.findOne({
+            where: {
+                mixer_id: req.params.mixer_id
+            }
+        }).then(function(dbMixer) {
+            res.json(dbMixer);
+        });
+    });
+
+    app.post("/api/mixers", function(req, res) {
+        // console.log(req.body);
+        Mixer.create({
+            mixer_name: req.body.liquor_name,
+            mixer_picture: req.body.mixer_picture,
+            category: req.body.category
+        }).then(function(dbMixer) {
+            res.json(dbMixer);
+        });
+
+    });
+
+    app.delete("/api/mixers/:mixer_id", function(req, res) {
+        Mixer.destroy({
+            where: {
+                mixer_id: req.params.mixer_id
+            }
+        }).then(function(dbMixer) {
+            res.json(dbMixer);
+        });
+    });
+
 }; // end of module

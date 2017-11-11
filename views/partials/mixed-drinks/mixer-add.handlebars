@@ -9,6 +9,10 @@
             <div class="form-group">
                 <label for="mixer-name">Mixer Name:</label>
                 <input type="text" class="form-control" id="mixer-name">
+                <label for="mixer-picture">Mixer Picture: </label>
+                <input type="text" class="form-control" id="mixer-picture">
+                <label for="mixer-category">Mixer Category: </label>
+                <input type="text" class="form-control" id="category">
             </div>
 
             <button type="POST" class="btn btn-default"><a href="/api/mixers">Add Mixer</a></button>
@@ -23,7 +27,9 @@
 
         event.preventDefault();
         var newMixer = {
-            mixer_name: $("#mixer-name").val().trim(),
+                mixer_name: $("#mixer-name").val(),
+                 mixer_picture: $("#mixer-picture").val().trim(),
+                 category: $("#category").val().trim()
         };
         console.log(newMixer);
 
@@ -32,7 +38,7 @@
     .done(function(data) {
         console.log(data);
       });
-      
+      location.href = "/mixers/all";
     console.log(newMixer);
 }); // End Doc Ready
 </script>

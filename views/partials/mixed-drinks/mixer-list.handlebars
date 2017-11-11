@@ -13,14 +13,16 @@
             <thead>
                 <tr>
                     <th><strong>Name</strong></th>
-                    <th><strong>Country</strong></th>
+                    <th><strong>Picture</strong></th>
+                    <th><strong>Category</strong></th>
                 </tr>
             </thead>
             {{#each mixer}}
             <tbody>
                 <tr>
                     <td>{{this.mixer_name}}</td>
-                    <td>{{this.mixer_category}}</td>
+                    <td>{{this.mixer_picture}}</td>
+                    <td>{{this.category}}</td>
                 </tr>
             </tbody>
             {{/each}}
@@ -47,7 +49,6 @@
             <a href="/mixers/add">Add a Mixer</a>
         </button>
     </div>
-
 </div>
 <script>
 $(document).ready(function() {

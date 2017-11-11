@@ -32,6 +32,6 @@ var Mixer = sequelize.define('mixer', {
 //     });
 // };
 
-Mixer.sync({ force: false });
+Mixer.sync();
 
 module.exports = Mixer;
