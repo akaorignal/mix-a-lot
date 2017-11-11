@@ -3,25 +3,26 @@
 
 <div class="container">
 
-  <div class="row">
-    <div class="col-sm-4">
-      {{!--Will need to add logic once liquor is added to prompt a modal requesting the quantity to add or portion.  Then once that is submitted the quantity will be added to it's respective area in the database--}}
+  {{!--Will need to add logic once liquor is added to prompt a modal requesting the quantity to add or portion.  Then once that is submitted the quantity will be added to it's respective area in the database--}}
+  <div class="row text-center">
+    {{!-- <div class="col-sm-4">
+      
       <h2>Add a Liquor</h2>
       <form id="addliquor" class="button-size">
         <textarea type="text" name="liquor"></textarea>
         <button type="submit" class="btn">Save Liquor</button>
       </form>
-      {{!--This part could be deleted since we can already delete selections--}}
-      {{!-- <h2>Update a Liquor</h2>
+
+      <h2>Update a Liquor</h2>
       <form id="updateliquor" class="button-size">
         <input type="text" name="id" placeholder="id">
         <textarea type="text" name="liquor" placeholder="Using the number, update your liquor choice"></textarea>
         <button type="submit">Update Liquor</button>
-      </form> --}}
-    </div>
+      </form>
+    </div> --}}
 
     {{!--Will need to create logic to submit this information into the mixed_drinks table.  Also, we may want to move this to the lower right hand corner leaving room for the "Concoction" to be displayed after clicking the mixer and liquor buttons respectively to be added into the concoction section.--}}
-    <div class="col-sm-4">
+    <div class="col-sm-12">
       <h4>Name Your Mixed Drink</h4>
       <form id="addmixdrink" class="button-size">
         <input type="text" name="mixdrink-id" placeholder="Name"><br>
@@ -30,22 +31,23 @@
         <button type="submit" class="btn" id="submit-drink">Submit Your Drink!</button>
       </form>
     </div>
-  
-    <div class="col-sm-4">
-      {{!--Add mixers, we could either create a mixer table or store mixers in an object that will be added to the mixed_drinks table on submit--}}
+
+    {{!--Add mixers, we could either create a mixer table or store mixers in an object that will be added to the mixed_drinks table on submit--}}  
+    {{!-- <div class="col-sm-4">
+
       <h2>Add A Mixer</h2>
       <form id="addmixer" class="button-size">
         <textarea type="text" name="mixer"></textarea>
         <button type="submit" class="btn">Save Mixer</button>
       </form>
-      {{!--This part could be deleted since we can already delete selections--}}
-      {{!-- <h2>Update A Mixer</h2>
+
+      <h2>Update A Mixer</h2>
       <form id="updatemixer" class="button-size">
         <input type="text" name="mixer-id" placeholder="id">
         <textarea type="text" name="liquor" placeholder="Using the number, update your mixer choice"></textarea>
         <button type="submit">Update Mixer</button>
-      </form> --}}
-    </div>
+      </form>
+    </div> --}}
 
   </div>
 
@@ -97,6 +99,7 @@
         </div>
     </div>
   </div>
+
 
 
 
