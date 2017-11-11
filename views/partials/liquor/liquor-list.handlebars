@@ -1,5 +1,5 @@
 
-<div class="jumbotron text-center container-fluid">
+<div class="text-center container-fluid">
         <h1> LIQUOR </h1>
         <p> I barely know...</p>
     </div>
@@ -40,14 +40,20 @@
 
     <div class="row">
         {{!-- Search --}}
-        <form>
+        <div class="input-group">
+            <input class="form-control width100">
+            <span class="input-group-btn">
+                <button class="btn btn-info">MyButton</button>
+            </span>
+        </div>
+        {{!-- <form>
             <div class="form-group">
                 <label for="liquor-search">Search for Liquor</label>
                 <input type="text" class="form-control" id="liquor-search">
                 <button type="GET" class="btn btn-default"><a href="/api/mixed-drinks/:id">Submit</a></button>
             </div>
-        </form>
-
+        </form> --}}
+        <br>
         <button class="btn btn-block liquor-add">
             <a href="#">Add a New Liquor!</a>
         </button>
