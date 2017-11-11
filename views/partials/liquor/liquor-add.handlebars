@@ -46,7 +46,7 @@
                 <input type="text" class="form-control" id="proof">
             </div>
 
-            <button type="POST" class="btn btn-default"><a href="/api/add">Add Liquor</a></button>
+            <button type="POST" class="btn btn-default"></button>
         </form>
     </div>
 
@@ -55,6 +55,7 @@
 
     // If there is logic it goes here, otherwise, destroy.
     $('.btn').on('click', function(event) {
+
         event.preventDefault();
         var newLiquor = {
             liquor_name: $("#liquor-name").val().trim(),
@@ -65,9 +66,12 @@
             city_of_origin: $("#city-of-origin").val().trim(),
             proof: $("#proof").val().trim(),
         };
+        console.log(newLiquor);
 
-        $.post("/api/all", newLiquor) 
+
+        $.post("/api/liquors", newLiquor) 
       .done(function(data) {
+
 
             console.log(data);
       });
