@@ -10,6 +10,8 @@ body{
 .jumbotron {
     background-image: url("https://images.pexels.com/photos/248427/pexels-photo-248427.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
     background-size: 100%;
+    margin-left: -20px;
+    margin-right: -20px;
 };
 
 .column-small-4{

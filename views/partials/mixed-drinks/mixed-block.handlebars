@@ -108,15 +108,17 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 
-  $('button').on('click', 'liquor-btn', function(){
-    var parentClass = parentClass.parentMethod
-    if (parentClass != concoction)
+  $('.liquor-btn').on('click', function(){
+    console.log('button clicked');
+    //$('.concoction').append(this);
+    var buttonParent = $(this).closest('div');
+    
+    console.log(buttonParent);
+    if (!buttonParent.hasClass('concoction'))
     {
-      this.append('.concoction');
-      this.remove();
+      $('.concoction').append(this);
     } else {
-      this.append('.liquor-add');
-      this.remove();
+      $('.liquor-add').append(this);
     } 
   });
 
