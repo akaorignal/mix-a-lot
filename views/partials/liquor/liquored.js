@@ -1,8 +1,8 @@
-// An array to collect survey answers =====================================================================================
+//An array to collect survey answers =====================================================================================
 var liquorData = [
 	{
 		"name":"Gilbey",
-		"photo":"https://imgur.com/a/M4Yzx",
+		"photo":"/liquor_images/Gilbeys-80.jpg",
 		"scores":[
 			2,
 			2,
@@ -19,8 +19,8 @@ var liquorData = [
 		]
 	},
 	{
-		"name":"Calvados-Bushnel",
-		"photo":"https://imgur.com/a/Ir1aY",
+		"name":"Calvados-Bushnell",
+		"photo":"/liquor_images/Calvados-Bushnell.jpg",
 		"scores":[
 			2,
 			1,
@@ -38,7 +38,7 @@ var liquorData = [
 	},
 	{
 		"name":"Jacquins-Ginger",
-		"photo":"https://imgur.com/a/kxsK9",
+		"photo":"/liquor_images/Jacquins-Ginger.jpg",
 		"scores":[
 			3,
 			1,
@@ -56,7 +56,7 @@ var liquorData = [
 	},
 	{
 		"name":"Absente",
-		"photo":"https://imgur.com/a/vRLre",
+		"photo":"/liquor_images/Absente.jpg",
 		"scores":[
 			3,
 			1,

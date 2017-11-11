@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<br>
 
-<head>
-    <title> Liquore Survey </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<br>
 
-<body>
-    <div class="container">
+ <div class="container">
         <h2> Liquor Survey</h2>
     </div>
     <div class="container">
@@ -116,12 +107,12 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title">
-			                            <strong> You might like this Liquor !</strong>
-			                        </h2>
+                                        <strong> You might like this Liquor !</strong>
+                                    </h2>
                     </div>
                     <div class="modal-body">
                         <h2 id="LiquorName"></h2>
-                        <div id="LiquorPhoto"></div>
+                        <img id="LiquorPhoto"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -201,7 +192,7 @@
     function compareResults() {
 
         var currentURL = window.location.origin;
-        $.ajax({ url: currentURL + "/api/liquors", method: "GET" })
+        $.ajax({ url: currentURL + "/api/liquored", method: "GET" })
             .done(function(liquorData) {
                 console.log("------------------------------------");
                 console.log("URL: " + currentURL + "/api/liquors");
@@ -209,7 +200,7 @@
 
                 for (var i = 0; i < liquorData.length; i++) {
                     $("#LiquorName").text(liquorData[i].name);
-                    $("#LiquorPhoto").text(liquorData[i].photo);
+                    $("#LiquorPhoto").attr('src', liquorData[i].photo);
                     console.log("--------------------------------");
                     console.log("Potential matches names: " + liquorData[i].name);
                     console.log("Potential matches photo url: " + liquorData[i].photo);
@@ -219,6 +210,3 @@
             });
     };
     </script>
-</body>
-
-</html>

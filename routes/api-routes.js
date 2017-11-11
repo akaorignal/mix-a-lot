@@ -1,11 +1,25 @@
 //var db = require('../models');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+var liquorData = require("../views/partials/liquor/liquored.js");
 var Mixer = require("../models/mixer.js");
+
+var Sequelize = require("sequelize");
 
 module.exports = function(app) {
     /* Liquors */
-    app.get('/api/liquors', function(req, res) {
+
+
+
+    app.get("/api/liquored", function(req, res) {
+        res.json(liquorData);
+    });
+
+    app.post("/api/liquored", function(req, res) {
+        res.json(liquorData);
+    });
+
+    app.get('/api/liquors/', function(req, res) {
         Liquor.findAll({})
             .then(function(dbLiquor) {
                 res.json(dbLiquor);
@@ -23,17 +37,17 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/add-liquor", function(req, res) {
+    app.post("/api/liquors", function(req, res) {
         // console.log(req.body);
         Liquor.create({
-            liquor_name: DataTypes.STRING,
-            liquor_picture: DataTypes.STRING,
-            spirits: DataTypes.STRING,
-            aging: DataTypes.INTEGER,
-            label: DataTypes.STRING,
-            country: DataTypes.STRING,
-            city_of_origin: DataTypes.STRING,
-            proof: DataTypes.INTEGER
+            liquor_name: req.params.liquor_name,
+            liquor_picture: req.params.liquor_picture,
+            spirits: req.params.spirits,
+            aging: req.params.aging,
+            label: req.params.label,
+            country: req.params.country,
+            city_of_origin: req.params.city_of_origin,
+            proof: req.params.proof
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
         });

@@ -1,6 +1,7 @@
 //var path = require('path');
 var Liquor = require("../models/liquor.js");
 var mixedDrinks = require("../models/mixedDrink.js");
+//var liquorData = require("../models/liquored.js");
 var Mixer = require("../models/mixer.js");
 
 
@@ -8,6 +9,15 @@ module.exports = function(app) {
 
     app.get('/', function(req, res) {
         res.render('index');
+    });
+
+
+    app.get('/liquors/home', function(req, res) {
+        res.render('partials/liquor/liquor2');
+    });
+
+       app.get('/liquors/survey', function(req, res) {
+        res.render('partials/liquor/survey');
     });
 
     app.get('/liquors/all', function(req, res) {
@@ -40,11 +50,18 @@ module.exports = function(app) {
 
 
     /* Mixed Drinks */
+
     app.get('/mixed-drinks/all', function(req, res) {
-        mixedDrinks.findAll({})
-            .then(function(dbMixedDrinks) {
-                res.render('partials/mixed-drinks/mixed-block', { mixedDrinks: dbMixedDrinks });
+        Liquor.findAll({})
+        .then(function(dbLiquor) {
+            Mixer.findAll({})
+            .then(function(dbMixer){
+                 res.render('partials/mixed-drinks/mixed-block', { liquor: dbLiquor, mixer: dbMixer });
+                //console.log(dbLiquor);
+                console.log(dbMixer);
             });
+          
+        });
     });
 
     app.get('/mixed-drinks/:id', function(req, res) {
