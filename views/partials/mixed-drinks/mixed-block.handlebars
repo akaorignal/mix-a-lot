@@ -108,19 +108,17 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 
-  $('button').on('click', 'liquor-add', function(){
+  $('button').on('click', 'liquor-btn', function(){
     var parentClass = parentClass.parentMethod
-    if(parentClass != concoction)
+    if (parentClass != concoction)
     {
       this.append('.concoction');
       this.remove();
     } else {
       this.append('.liquor-add');
       this.remove();
-    }
-
-
-  })
+    } 
+  });
 
   $('#submit-drink').on('click', function(){
     event.preventDefault();
