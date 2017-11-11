@@ -89,11 +89,12 @@
 
     <div class="col-sm-6">
       <h3>Mixers to Add</h3>
-
-        {{#each mixer}}
-          <button class="mixer-btn btn">{{dataValues.mixer_name}}</button>
-          {{!-- <div>It looped!</div> --}}
-        {{/each}}
+        <div class="mixer-add">
+          {{#each mixer}}
+            <button class="mixer-btn btn">{{dataValues.mixer_name}}</button>
+            {{!-- <div>It looped!</div> --}}
+          {{/each}}
+        </div>
     </div>
   </div>
 
@@ -119,6 +120,20 @@ $( document ).ready(function() {
       $('.concoction').append(this);
     } else {
       $('.liquor-add').append(this);
+    } 
+  });
+
+    $('.mixer-btn').on('click', function(){
+    console.log('button clicked');
+    //$('.concoction').append(this);
+    var buttonParent = $(this).closest('div');
+    
+    console.log(buttonParent);
+    if (!buttonParent.hasClass('concoction'))
+    {
+      $('.concoction').append(this);
+    } else {
+      $('.mixer-add').append(this);
     } 
   });
 
