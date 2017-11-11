@@ -22,7 +22,7 @@ module.exports = function(app) {
 
 
 
-    app.get('/api/liquors/', function(req, res) {
+    app.get('/api/liquors', function(req, res) {
 
         Liquor.findAll({})
             .then(function(dbLiquor) {
@@ -45,14 +45,14 @@ module.exports = function(app) {
     app.post("/api/liquors", function(req, res) {
         // console.log(req.body);
         Liquor.create({
-            liquor_name: req.params.liquor_name,
-            liquor_picture: req.params.liquor_picture,
-            spirits: req.params.spirits,
-            aging: req.params.aging,
-            label: req.params.label,
-            country: req.params.country,
-            city_of_origin: req.params.city_of_origin,
-            proof: req.params.proof
+            liquor_name: req.body.liquor_name,
+            liquor_picture: req.body.liquor_picture,
+            spirits: req.body.spirits,
+            aging: req.body.aging,
+            label: req.body.label,
+            country: req.body.country,
+            city_of_origin: req.body.city_of_origin,
+            proof: req.body.proof
 
         }).then(function(dbLiquor) {
             res.json(dbLiquor);
