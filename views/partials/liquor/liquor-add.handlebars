@@ -46,15 +46,16 @@
                 <input type="text" class="form-control" id="proof">
             </div>
 
-            <button type="POST" class="btn btn-default"></button>
+            <button type="POST" class="btn btn-default"><a href="/api/liquors">Add Liquor</a></button>
         </form>
     </div>
 
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
+
     // If there is logic it goes here, otherwise, destroy.
-    $('form').on('submit', function() {
+    $('.btn').on('click', function(event) {
+
         event.preventDefault();
         var newLiquor = {
             liquor_name: $("#liquor-name").val().trim(),
@@ -67,14 +68,13 @@ $(document).ready(function() {
         };
         console.log(newLiquor);
 
-        function submitPost(Post) {
-		$.post('/api/liquors/', Post, function() {
-			window.location.href = '/liquors/all';
-		});
-	}
 
-    submitPost(newLiquor);
-    });
+        $.post("/api/liquors", newLiquor) 
+      .done(function(data) {
 
+
+            console.log(data);
+      });
+  console.log(newLiquor);
 }); // End Doc Ready
 </script>
