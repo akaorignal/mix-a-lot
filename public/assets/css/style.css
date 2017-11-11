@@ -2,7 +2,7 @@
 /*
 <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet"> */
 body{
-    background-color: #000000;
+    background-color: #0E0B16;
 }
 
 /*save locally as an option */
@@ -21,36 +21,29 @@ body{
 }
 
 h1, body {
-    color: #b3c2d8;
+    color: #E7DFDD;
 }
 
 .jumbotron .h1, .jumbotron h1{
     text-align: left;
-    color: white;
+    color: #E7DFDD;
 }
 
 .jumbotron p{
     text-align: left;
-    color: white;
+    color: #E7DFDD;
 }
 
 h2{
     
-    color: #2c50dc;
+    color: #4717F6;
 
 }
 
 h3 {
-    color: purple;
+    color: #A239CA;
 }
 
-h4 {
-    color: purple;
-}
-
-.btn {
-    
-}
 /* credit --
 
 Photo by Adam Jaime on Unsplash */
